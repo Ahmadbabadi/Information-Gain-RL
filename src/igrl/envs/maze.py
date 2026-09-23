@@ -35,7 +35,7 @@ class MazeEnv:
 
     @property
     def n_states(self):
-        return self.rows * self.cols
+        return self.grid.size
 
     @property
     def n_actions(self):
