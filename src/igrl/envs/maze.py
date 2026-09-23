@@ -34,16 +34,12 @@ class MazeEnv:
         self.steps = 0
 
     @property
-    def n_states(self):
-        return self.grid.size
-
-    @property
     def n_actions(self):
         return len(self.actions)
 
     @property
-    def shape(self):
-        return self.grid.shape
+    def env_grid(self):
+        return self.grid
 
     def reset(self):
         self.state = self.start
