@@ -9,7 +9,7 @@ class Position:
 
 
 class MazeEnv:
-    def __init__(self, max_steps: int = 100):
+    def __init__(self, max_steps = 100):
         self.grid = np.array([
                             [0, 0, 0, 1, 0, 0],
                             [1, 1, 0, 1, 0, 1],
@@ -34,7 +34,11 @@ class MazeEnv:
         self.steps = 0
 
     @property
-    def n_actions(self) -> int:
+    def n_states(self):
+        return self.rows * self.cols
+
+    @property
+    def n_actions(self):
         return len(self.actions)
 
     @property
@@ -46,7 +50,7 @@ class MazeEnv:
         self.steps = 0
         return self.state
 
-    def step(self, action: int):
+    def step(self, action):
         if action not in self.actions:
             raise ValueError(f"Invalid action: {action}")
 
