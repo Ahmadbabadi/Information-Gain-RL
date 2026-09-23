@@ -5,11 +5,11 @@ from igrl.agents.q_learning import QLearningAgent
 
 env = MazeEnv(max_steps=100)
 
-agent = QLearningAgent( maze_shape=env.shape, n_actions=env.n_actions,
+agent = QLearningAgent( maze_shape=env.env_grid.shape, n_actions=env.n_actions,
                        learning_rate=0.1, gamma=0.99, epsilon=0.1, seed=3456)
 
 
-n_episodes = 200000
+n_episodes = 2000
 successes = []
 episode_steps = []
 for episode in range(n_episodes):
@@ -31,20 +31,20 @@ for episode in range(n_episodes):
 
 
 action_symbols = {
-    0: "↑",
-    1: "↓",
-    2: "←",
-    3: "→",
-}
+                    0: "↑",
+                    1: "↓",
+                    2: "←",
+                    3: "→",
+                }
 
-for row in range(env.shape[0]):
+for row in range(env.env_grid.shape[0]):
 
-    for col in range(env.shape[1]):
+    for col in range(env.env_grid.shape[1]):
 
         if env.grid[row, col] == 1:
             print("#", end=" ")
 
-        elif (row, col) == (env.goal.row, env.goal.col):
+        elif (row, col) == (env.goal[0], env.goal[1]):
             print("G", end=" ")
 
         else:
@@ -59,5 +59,3 @@ for row in range(env.shape[0]):
     print()
 
         
-
-print(agent.q_table[4, 0])
